@@ -1,13 +1,11 @@
-import React from 'react'
-import { NotificationTypes } from '../types'
+import { useAppSelector } from '../utils/hooks'
 
-interface Props {
-  type: NotificationTypes
-  message: string
-}
+const Notification = () => {
+  const { message, type, visible } = useAppSelector((state) => state.notification)
 
-const Notification: React.FC<Props> = ({ type, message }) => {
-  return <p className={`notification ${type}-notify`}>{message}</p>
+  if (!visible) return null
+
+  return <div className={`notification ${type}`}>{message}</div>
 }
 
 export default Notification

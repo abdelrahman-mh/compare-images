@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import imagesReducer from './features/imageSlice'
+import notificationReducer from './features/notificationSlice'
 
 export const store = configureStore({
   reducer: {
     images: imagesReducer,
+    notification: notificationReducer,
   },
 })
 
