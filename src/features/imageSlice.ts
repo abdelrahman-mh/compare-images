@@ -6,7 +6,7 @@ import { Image, Side } from '../utils/types'
 import { AppThunk } from '../utils/hooks'
 import { parseImage } from '../utils/helper'
 import { isValidURL } from '../utils/helper'
-
+import { delay } from '../utils/helper'
 interface ImagesState {
   images: Image[]
   isFades: boolean
@@ -17,18 +17,11 @@ const initialState: ImagesState = {
   isFades: false,
 }
 
-function delay(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms))
-}
-
 export const setImageFromUri = createAsyncThunk<
   void,
   { value: string; side: 'left' | 'right' },
   { state: RootState }
 >('images/fetchAndSetImage', async ({ value, side }, { dispatch, rejectWithValue }) => {
-  if (!isValidURL(value)) {
-    return rejectWithValue('Invalid image URL. Please enter a valid URL or try another one.')
-  }
   try {
     const response = await imagesServices.fetchImage(value)
     const image = await parseImageFromWEB({ response, imageUrl: value, side })

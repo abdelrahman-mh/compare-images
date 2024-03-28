@@ -1,10 +1,12 @@
 import React from 'react'
 import SelectFileInput from '../SelectFileInput'
-import ImageForm from '../ImageForm'
+import ImageSearchForm from '../ImageSearchForm'
 
-interface Props {}
+interface Props {
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>
+}
 
-const SelectImage: React.FC<Props> = () => {
+const SelectImage: React.FC<Props> = ({ setLoading }) => {
   return (
     <>
       <div className="inputFile-select flex flex-1 items-center justify-center gap-5">
@@ -16,7 +18,7 @@ const SelectImage: React.FC<Props> = () => {
         />
         <p className="break-normal text-base">
           Drag an image here or{' '}
-          <SelectFileInput>
+          <SelectFileInput setLoading={setLoading}>
             <span className="cursor-pointer text-sky-500 underline">upload a file</span>
           </SelectFileInput>
         </p>
@@ -27,7 +29,7 @@ const SelectImage: React.FC<Props> = () => {
           <span>OR</span>
           <span className="h-[1px] flex-1 bg-gray-400"></span>
         </div>
-        <ImageForm />
+        <ImageSearchForm />
       </div>
     </>
   )

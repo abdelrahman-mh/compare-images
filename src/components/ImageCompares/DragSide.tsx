@@ -82,7 +82,7 @@ const DragSide: React.FC = () => {
         <Image url={currentImage.url} />
       ) : (
         <>
-          {!dragging && <SelectImage />}
+          {!dragging && <SelectImage setLoading={setLoading} />}
           {dragging && (
             <p className="absolute inset-0 flex items-center justify-center">Drop an image here</p>
           )}

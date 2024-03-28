@@ -1,5 +1,11 @@
 import { Image } from './types'
 import { AxiosResponse } from 'axios'
+
+// For Development Tests!
+export function delay(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
 export const getBase64Representation = (file: File): Promise<string> => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader()

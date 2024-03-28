@@ -1,41 +1,39 @@
-import React, { useRef } from "react";
+import React, { useRef } from 'react'
 
-import ImageForm from "../ImageForm";
-import Popup from "reactjs-popup";
-
+import ImageSelectForm from '../ImageSearchForm'
+import Popup from 'reactjs-popup'
+import { PopupRef } from '../../utils/types'
 interface Props {
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-type PopupRef = {
-  close: () => void;
-  open: () => void;
-  toggle: () => void;
-};
-
 const PopupForm: React.FC<Props> = ({ setOpen }) => {
-  const noteEditorRef = useRef<PopupRef>(null);
+  const noteEditorRef = useRef<PopupRef>(null)
 
-  const closePopUp = () => noteEditorRef.current?.close();
+  const closePopUp = () => noteEditorRef.current?.close()
   return (
     <Popup
       ref={noteEditorRef}
-      trigger={<button className="">From URL</button>}
+      trigger={<button className="rounded-lg border-none p-1 hover:bg-sky-400/20">From URL</button>}
       onOpen={() => setOpen(true)}
       onClose={() => setOpen(false)}
       repositionOnResize
       modal
-      closeOnDocumentClick={true}
+      closeOnDocumentClick={false}
       lockScroll
       position="center center"
+      className="search-image-modal"
     >
-      <ImageForm>
-        <button className="close-popup-form" onClick={closePopUp}>
+      <ImageSelectForm close={closePopUp} classes="py-[90px] rounded-lg px-3 shadow-sm bg-white">
+        <button
+          onClick={closePopUp}
+          className="absolute -right-3 -top-3 w-8 rounded-full bg-red-400 text-2xl text-white  hover:text-red-500"
+        >
           &#x2715;
         </button>
-      </ImageForm>
+      </ImageSelectForm>
     </Popup>
-  );
-};
+  )
+}
 
-export default PopupForm;
+export default PopupForm

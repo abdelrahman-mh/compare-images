@@ -5,9 +5,11 @@ import { message } from 'antd'
 
 interface Props {
   children?: React.ReactNode
+  classes?: string
+  close?: () => void
 }
 
-const ImageForm: React.FC<Props> = ({ children }) => {
+const ImageSearchForm: React.FC<Props> = ({ children, classes, close }) => {
   const dispatch = useAppDispatch()
   const side = useSide()
   const [value, setValue] = useState('')
@@ -23,6 +25,7 @@ const ImageForm: React.FC<Props> = ({ children }) => {
     setLoading(true)
     try {
       await dispatch(setImageFromUri({ value, side })).unwrap()
+      close?.()
     } catch (error) {
       message.error(error as string)
     } finally {
@@ -33,7 +36,7 @@ const ImageForm: React.FC<Props> = ({ children }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="image-form mt-3 flex flex-col-reverse gap-3  sm:flex-row"
+      className={`image-form relative mt-3 flex flex-col-reverse gap-3 sm:flex-row ${classes}`}
     >
       <button
         type="submit"
@@ -52,6 +55,7 @@ const ImageForm: React.FC<Props> = ({ children }) => {
         value={value}
         disabled={loading}
         onChange={handleChange}
+        required
         className={
           'flex-1 rounded-3xl border-[1px] border-solid border-gray-400 ' +
           'bg-slate-100 px-7 py-2 text-sm font-normal text-gray-950 ' +
@@ -63,4 +67,4 @@ const ImageForm: React.FC<Props> = ({ children }) => {
   )
 }
 
-export default ImageForm
+export default ImageSearchForm

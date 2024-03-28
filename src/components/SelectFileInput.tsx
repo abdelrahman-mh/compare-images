@@ -1,29 +1,48 @@
-import React, { useRef } from "react";
-import { useAppDispatch, useSide } from "../utils/hooks";
-import { setFiles } from "../features/imageSlice";
-
+import React, { useRef } from 'react'
+import { useAppDispatch, useSide } from '../utils/hooks'
+import { setFiles } from '../features/imageSlice'
+import { message } from 'antd'
 interface Props {
-  children: React.ReactNode;
+  children: React.ReactNode
+  setLoading?: React.Dispatch<React.SetStateAction<boolean>>
+  close?: () => void
 }
 
-const SelectFileInput: React.FC<Props> = ({ children }) => {
-  const dispatch = useAppDispatch();
-  const side = useSide();
-  const fileInputRef = useRef<HTMLInputElement>(null);
+const SelectFileInput: React.FC<Props> = ({ children, setLoading, close }) => {
+  const dispatch = useAppDispatch()
+  const side = useSide()
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   const handleFileInputClick = () => {
     if (fileInputRef.current) {
-      fileInputRef.current.click();
+      fileInputRef.current.click()
     }
-  };
+  }
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const fileList = event.target.files;
-    if (fileList) {
-      const validFileList = Array.from(fileList);
-      dispatch(setFiles({ files: validFileList, side }));
+  const handleInputChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    setLoading?.(true)
+    const fileList = event.target.files
+
+    try {
+      if (fileList) {
+        const validFileList = Array.from(fileList)
+        await dispatch(setFiles({ files: validFileList, side }))
+      } else {
+        message.error('No images selected. Please select at least one image.')
+      }
+    } catch (err) {
+      let Errormessage: string
+      if (err instanceof Error) {
+        Errormessage = err.message
+      } else {
+        Errormessage = 'Error happened when upload a images'
+      }
+      message.error(Errormessage)
+    } finally {
+      close?.()
+      setLoading?.(false)
     }
-  };
+  }
 
   return (
     <>
@@ -34,14 +53,13 @@ const SelectFileInput: React.FC<Props> = ({ children }) => {
       <input
         type="file"
         ref={fileInputRef}
-        style={{ display: "none" }}
         accept="image/*"
-        className="images-diff__side-input"
+        className="hidden"
         onChange={handleInputChange}
         multiple
       />
     </>
-  );
-};
+  )
+}
 
-export default SelectFileInput;
+export default SelectFileInput
