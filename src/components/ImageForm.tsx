@@ -26,25 +26,52 @@ const ImageForm: React.FC<Props> = ({ children }) => {
     try {
       const response = await imageServices.fetchImage(value)
 
-      const image = await parseImageFromWEB({ response, imageUrl: value, side })
+      const image = await parseImageFromWEB({
+        response,
+        imageUrl: value,
+        side,
+      })
       if (image) {
         dispatch(setImage(image))
       } else {
         throw new Error('The URL does not point to a valid image.')
       }
     } catch (error) {
-      dispatch(setNotification({ message: 'Invalid image URL. Please enter a valid URL or try another one.', type: 'error' }))
+      dispatch(
+        setNotification({
+          message: 'Invalid image URL. Please enter a valid URL or try another one.',
+          type: 'error',
+        })
+      )
     } finally {
       setLoading(false)
     }
   }
 
   return (
-    <form onSubmit={handleSubmit} className='image-form'>
-      <input type='url' placeholder='Paste image link' value={value} disabled={loading} onChange={handleChange} className='image-form__input'/>
-      <button type='submit' disabled={loading} className='image-form__submit-button'>
+    <form
+      onSubmit={handleSubmit}
+      className="image-form mt-3 flex flex-col-reverse gap-3  sm:flex-row"
+    >
+      <button
+        type="submit"
+        disabled={loading}
+        className={
+          'rounded-3xl border-[1px] border-solid border-gray-400 ' +
+          'bg-slate-100 px-7 py-2 text-base font-normal text-sky-500 ' +
+          'hover:bg-slate-300 hover:text-sky-600'
+        }
+      >
         {loading ? 'Searching...' : 'Search'}
       </button>
+      <input
+        type="url"
+        placeholder="Paste image link"
+        value={value}
+        disabled={loading}
+        onChange={handleChange}
+        className="flex-1 rounded-3xl border-[1px] border-solid border-gray-400 bg-slate-100 px-7 py-2 text-sm font-normal text-gray-950 focus:border-sky-400 focus:outline-none"
+      />
       {children}
     </form>
   )

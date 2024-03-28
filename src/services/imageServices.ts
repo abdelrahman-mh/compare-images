@@ -1,9 +1,9 @@
-import axios from 'axios'
+import axios from "axios";
 
 const fetchImage = async (url: string) => {
-  const response = await axios.get(url, { responseType: 'arraybuffer' })
-  return response
-}
+  const response = await axios.get(url, { responseType: "arraybuffer" });
+  return response;
+};
 
-const payload = { fetchImage }
-export default payload
+const payload = { fetchImage };
+export default payload;

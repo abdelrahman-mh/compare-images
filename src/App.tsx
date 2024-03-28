@@ -1,7 +1,7 @@
-import ImageCompares from './components/ImageCompares'
-import ImagesDetails from './components/ImageDetails'
-import Notification from './components/Notification'
-import Options from './components/Options'
+import ImageCompares from "./components/ImageCompares";
+import ImagesDetails from "./components/ImageDetails";
+import Notification from "./components/Notification";
+import Options from "./components/Options";
 
 const App: React.FC = () => {
   return (
@@ -11,7 +11,7 @@ const App: React.FC = () => {
       <ImageCompares />
       <Notification />
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
