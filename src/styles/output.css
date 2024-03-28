@@ -554,18 +554,6 @@ video {
   --tw-contain-style:  ;
 }
 
-.pointer-events-none {
-  pointer-events: none;
-}
-
-.\!visible {
-  visibility: visible !important;
-}
-
-.visible {
-  visibility: visible;
-}
-
 .absolute {
   position: absolute;
 }
@@ -576,10 +564,6 @@ video {
 
 .inset-0 {
   inset: 0px;
-}
-
-.z-20 {
-  z-index: 20;
 }
 
 .mx-auto {
@@ -722,9 +706,9 @@ video {
   background-color: rgb(21 128 61 / var(--tw-bg-opacity));
 }
 
-.bg-sky-100 {
+.bg-sky-50 {
   --tw-bg-opacity: 1;
-  background-color: rgb(224 242 254 / var(--tw-bg-opacity));
+  background-color: rgb(240 249 255 / var(--tw-bg-opacity));
 }
 
 .bg-slate-100 {
@@ -783,8 +767,8 @@ video {
   text-decoration-line: underline;
 }
 
-.opacity-25 {
-  opacity: 0.25;
+.opacity-50 {
+  opacity: 0.5;
 }
 
 .hover\:bg-slate-300:hover {

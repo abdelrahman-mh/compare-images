@@ -8,12 +8,3 @@ export interface Image {
   size: number;
   side: Side;
 }
-
-export type NotifyType = "error" | "success" | "warning" | "info";
-export interface Notification {
-  message: string;
-  type?: NotifyType;
-
-  // default 3000;
-  timeout?: number;
-}

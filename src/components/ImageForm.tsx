@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import { useAppDispatch, useSide } from '../utils/hooks'
-import { setNotification } from '../features/notificationSlice'
-import imageServices from '../services/imageServices'
-import { parseImageFromWEB } from '../utils/helper'
-import { setImage } from '../features/imageSlice'
+import { setImageFromUri } from '../features/imageSlice'
+import { message } from 'antd'
 
 interface Props {
   children?: React.ReactNode
@@ -24,25 +22,9 @@ const ImageForm: React.FC<Props> = ({ children }) => {
 
     setLoading(true)
     try {
-      const response = await imageServices.fetchImage(value)
-
-      const image = await parseImageFromWEB({
-        response,
-        imageUrl: value,
-        side,
-      })
-      if (image) {
-        dispatch(setImage(image))
-      } else {
-        throw new Error('The URL does not point to a valid image.')
-      }
+      await dispatch(setImageFromUri({ value, side })).unwrap()
     } catch (error) {
-      dispatch(
-        setNotification({
-          message: 'Invalid image URL. Please enter a valid URL or try another one.',
-          type: 'error',
-        })
-      )
+      message.error(error as string)
     } finally {
       setLoading(false)
     }
@@ -70,7 +52,11 @@ const ImageForm: React.FC<Props> = ({ children }) => {
         value={value}
         disabled={loading}
         onChange={handleChange}
-        className="flex-1 rounded-3xl border-[1px] border-solid border-gray-400 bg-slate-100 px-7 py-2 text-sm font-normal text-gray-950 focus:border-sky-400 focus:outline-none"
+        className={
+          'flex-1 rounded-3xl border-[1px] border-solid border-gray-400 ' +
+          'bg-slate-100 px-7 py-2 text-sm font-normal text-gray-950 ' +
+          'focus:border-sky-400 focus:outline-none'
+        }
       />
       {children}
     </form>
