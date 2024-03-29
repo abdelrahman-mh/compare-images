@@ -12,8 +12,9 @@ Images compares app build with React, Typescript, Redux, and more
     > when selected image with url, first we check if the url point to a valid image link, if it's,
     > we save the image data with `Blob` and use it, so not needed to fetch the image again to add it to the `dom`
   - Drag and chose multiply images
+  - you can click on any side, and press Ctl+V, if you was copy a url this will fetch the image also
   - change selected image
-    > so use able to select image with: Drag & Drop, url, browser local files
+    > so use able to select image with: Drag & Drop, url, browser local files, Ctl+V
 
 - Image diff component
   > show tow selected images top of both, and have a nice diff bar moves with cursor move

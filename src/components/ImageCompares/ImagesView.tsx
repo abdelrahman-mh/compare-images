@@ -24,7 +24,7 @@ const ImagesView: React.FC<Props> = ({ elX, elW }) => {
         style={{
           clipPath: `polygon(0 0, ${elX - (elW - 10 - leftIW) / 2}px 0, ${elX - (elW - 10 - leftIW) / 2}px 100%, 0 100%)`,
         }}
-        className="z-10 col-start-1 col-end-1 row-start-1 row-end-1 block max-h-[70vh] w-auto self-start justify-self-center object-contain"
+        className="pointer-events-none z-10 col-start-1 col-end-1 row-start-1 row-end-1 block max-h-[70vh] w-auto select-none self-start justify-self-center object-contain"
       />
       <Image
         innerRef={rightIR}
@@ -32,7 +32,7 @@ const ImagesView: React.FC<Props> = ({ elX, elW }) => {
           clipPath: `polygon(${elX - (elW - 10 - rightIW) / 2}px 0, 100% 0, 100% 100%, ${elX - (elW - 10 - rightIW) / 2}px 100%)`,
         }}
         url={rightImage.url}
-        className="col-start-1 col-end-1 row-start-1 row-end-1 block max-h-[70vh] w-auto self-start justify-self-center object-contain"
+        className="pointer-events-none col-start-1 col-end-1 row-start-1 row-end-1 block max-h-[70vh] w-auto select-none self-start justify-self-center object-contain"
       />
       <div className="absolute"></div>
     </>

@@ -12,3 +12,4 @@
 - [ ] Handle "Not allowed to load local resource" Error
 - [ ] Add screenshot for app in `README` file
 - [ ] Production Build
+- [ ] Docs
