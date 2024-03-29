@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react'
 import { PopupRef } from '../../utils/types'
 import Popup from 'reactjs-popup'
+import { TbArrowBigRightFilled } from 'react-icons/tb'
 
 import SelectFileInput from '../SelectFileInput'
 import PopupForm from './PopupForm'
@@ -17,7 +18,8 @@ const SelectImageMenu: React.FC<Props> = ({ isFill }) => {
   return (
     <Popup
       trigger={
-        <span className="cursor-pointer select-none text-sky-400 hover:underline">
+        <span className="flex w-min cursor-pointer select-none items-center gap-1 text-sky-400 underline">
+          <TbArrowBigRightFilled className="text-sky-700" />{' '}
           {isFill ? 'Change this image' : 'Chose image'}
         </span>
       }

@@ -12,7 +12,9 @@ Images compares app build with React, Typescript, Redux, and more
 - able to change selected image with: Drag & Drop, url, browser local
 - error handling and notifications
 - loading handles
-- nice popup for change the selection image
+- popups menu, and tooltip
+- format the file size to a human readily size with B, KB, MB, GB, TB
+- copy the content when click on `info` elements
 
 ## what you can do
 

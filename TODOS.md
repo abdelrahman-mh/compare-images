@@ -1,7 +1,11 @@
-- [x] Make ability if user select tow images and drop theme in any box
-- [ ] Add Settings
-  - [ ] Setting to change the Diff bar axis for X, Y
-- [ ] Better UI Design Improved
-- [x] Display file Details or Properties in screen incudes image size, name, type, resolution
-- [x] Add image link to upload it from internet or client fils
-- [x] Handle app build with redux toolkit #done with **Abdel-Rahman**
+- [x] Implement the ability for users to select and drop two images into any box.
+- [ ] Add Settings:
+  - [ ] Allow users to change the axis of the Diff bar for X and Y.
+- [ ] Enhance UI Design:
+- [ ] Incorporate Undo Functionality:
+  - [ ] Provide users with the option to undo changes or revert to previous images.
+- [ ] Introduce Image Selection Feature:
+  - [ ] Enable users to select a list of images and preview their choices.
+- [x] Display File Details
+- [x] Add Image Upload Option
+- [x] Utilize Redux Toolkit

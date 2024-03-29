@@ -6,6 +6,18 @@ export function delay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
+export function formatSize(size: number) {
+  const units = ['B', 'KB', 'MB', 'GB', 'TB']
+  let unitIndex = 0
+
+  while (size >= 1024 && unitIndex < units.length - 1) {
+    size /= 1024
+    unitIndex++
+  }
+
+  return size.toFixed(2) + ' ' + units[unitIndex]
+}
+
 export const getBase64Representation = (file: File): Promise<string> => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader()
