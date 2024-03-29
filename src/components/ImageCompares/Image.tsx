@@ -1,7 +1,5 @@
 const Image = ({ url }: { url: string }) => {
-  return (
-    <img alt="side-image" className={`images-diff__side-image`} src={url} />
-  );
-};
+  return <img alt="side-image" className="max-w-full" src={url} />
+}
 
-export default Image;
+export default Image

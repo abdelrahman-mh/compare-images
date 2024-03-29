@@ -6,14 +6,14 @@ interface Props {}
 
 const ImageCompare: React.FC<Props> = () => {
   return (
-    <div className="image-compare flex flex-col items-center gap-5 mt-3">
+    <div className="flex flex-col sm:flex-row items-center gap-5 mt-3 justify-center">
       <SideProvider value="left">
         <DragSide />
       </SideProvider>
       <SideProvider value="right">
         <DragSide />
       </SideProvider>
-      <div className="image-compare__diff-bar"></div>
+      <div className="absolute"></div>
     </div>
   );
 };
