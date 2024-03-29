@@ -7,14 +7,14 @@ import Image from './Image'
 import { message, Spin } from 'antd'
 
 const DragSide: React.FC = () => {
+  const [dragging, setDragging] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const dragBoxRef = useRef<HTMLDivElement>(null)
+
   const dispatch = useAppDispatch()
   const side = useSide()
   const { isFades, images } = useAppSelector((state) => state.images)
   const currentImage = images.find((image) => image.side === side)
-
-  const [dragging, setDragging] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const dragBoxRef = useRef<HTMLDivElement>(null)
 
   const handleDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault()
@@ -76,17 +76,20 @@ const DragSide: React.FC = () => {
       onDragEnter={handleDragEnter}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
-      className={`relative flex min-h-[300px] w-full max-w-[500px] flex-col overflow-hidden rounded-lg border-[1px] border-dashed border-gray-700 p-5 ${dragging && 'border-sky-500 bg-sky-50'} ${side} `}
+      className={`rounded-lg border-dashed p-5 z-20
+    ${isFades ? (side === 'left' ? 'left-0' : 'right-0') + ' absolute top-0 h-full w-1/2' : 'relative flex min-h-[300px] w-full max-w-[500px] flex-col overflow-hidden border border-gray-700'}
+    ${dragging ? 'border border-sky-500' : ''}`}
     >
-      {currentImage ? (
-        <Image url={currentImage.url} />
-      ) : (
+      {!isFades && (
         <>
-          {!dragging && <SelectImage setLoading={setLoading} />}
-          {dragging && (
-            <p className="absolute inset-0 flex items-center justify-center">Drop an image here</p>
-          )}
+          {!currentImage && <SelectImage setLoading={setLoading} />}
+          {currentImage && <Image url={currentImage.url} />}
         </>
+      )}
+      {dragging && (
+        <p className="absolute inset-0 flex items-center justify-center bg-sky-50">
+          Drop an image here
+        </p>
       )}
       {loading && (
         <Spin className="absolute inset-0 flex items-center justify-center bg-sky-50 opacity-50" />

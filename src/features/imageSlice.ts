@@ -5,8 +5,6 @@ import { parseImageFromWEB } from '../utils/helper'
 import { Image, Side } from '../utils/types'
 import { AppThunk } from '../utils/hooks'
 import { parseImage } from '../utils/helper'
-import { isValidURL } from '../utils/helper'
-import { delay } from '../utils/helper'
 interface ImagesState {
   images: Image[]
   isFades: boolean
@@ -28,6 +26,7 @@ export const setImageFromUri = createAsyncThunk<
 
     if (image) {
       dispatch(setImage(image))
+      dispatch(triggerFades())
     } else {
       return rejectWithValue('The URL does not point to a valid image. Please try another one.')
     }
@@ -62,13 +61,13 @@ const imagesSlice = createSlice({
         }
       })
     },
-    toggleFades: (state) => {
-      state.isFades = !state.isFades
+    triggerFades: (state) => {
+      state.isFades = state.images.length === 2 ? true : false
     },
   },
 })
 
-export const { setImage, setImages, toggleFades } = imagesSlice.actions
+export const { setImage, setImages, triggerFades } = imagesSlice.actions
 
 export default imagesSlice.reducer
 
@@ -80,7 +79,6 @@ export const setFiles = ({ files, side }: { files: File[] | null; side: Side }):
 
     const filesToProcess = files.slice(0, 2)
     try {
-      await delay(1000)
       const processedImagesPromises = filesToProcess.map((file, index) => {
         const assetsSide = index % 2 === 0 ? side : side === 'left' ? 'right' : 'left'
         return parseImage(file, assetsSide)
@@ -88,6 +86,7 @@ export const setFiles = ({ files, side }: { files: File[] | null; side: Side }):
 
       const processedImages = await Promise.all(processedImagesPromises)
       dispatch(setImages(processedImages))
+      dispatch(triggerFades())
     } catch (error) {
       throw new Error(
         'Failed to process selected images. Please ensure they are valid image files.'

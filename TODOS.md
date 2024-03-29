@@ -4,8 +4,11 @@
 - [ ] Enhance UI Design:
 - [ ] Incorporate Undo Functionality:
   - [ ] Provide users with the option to undo changes or revert to previous images.
-- [ ] Introduce Image Selection Feature:
-  - [ ] Enable users to select a list of images and preview their choices.
+- [ ] Enable users to select a list of images and preview their choices.
 - [x] Display File Details
 - [x] Add Image Upload Option
 - [x] Utilize Redux Toolkit
+- [ ] Go full screen!
+- [ ] Handle "Not allowed to load local resource" Error
+- [ ] Add screenshot for app in `README` file
+- [ ] Production Build
