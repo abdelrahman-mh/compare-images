@@ -13,3 +13,5 @@
 - [ ] Add screenshot for app in `README` file
 - [ ] Production Build
 - [ ] Docs
+- [ ] Make tow images have the same width
+- [ ] change the diff mechanize for better performance see https://letsenhance.io/ form more information

@@ -7,7 +7,7 @@ const ImagesDetails = () => {
   const left_image = images.find((e) => e.side === 'left')
   const right_image = images.find((e) => e.side === 'right')
   return (
-    <div className="image-details flex w-full flex-col gap-4 sm:flex-row">
+    <div className="image-details flex mt-4 w-full flex-col gap-4 sm:flex-row">
       <SideProvider value="left">
         <DetailsSide image={left_image} />
       </SideProvider>

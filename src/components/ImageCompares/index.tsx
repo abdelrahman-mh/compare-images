@@ -19,7 +19,7 @@ const ImageCompare: React.FC<Props> = () => {
   return (
     <div
       ref={ref}
-      className={`relative mx-auto mt-3 px-[5px] py-7 ${isFades ? 'box-border grid w-fit grid-cols-1 grid-rows-1 border' : 'flex flex-col items-center justify-center gap-5 sm:flex-row'}`}
+      className={`relative mx-auto mt-3 px-[5px] py-7 ${isFades ? 'cursor-col-resize box-border grid w-fit grid-cols-1 grid-rows-1 border' : 'flex flex-col items-center justify-center gap-5 sm:flex-row'}`}
     >
       <SideProvider value="left">
         <DragSide />

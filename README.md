@@ -2,32 +2,63 @@
 
 Images compares app build with React, Typescript, Redux, and more
 
+# Overview
+
+- [Screenshots](#screenshot)
+- [feature](#features)
+- [what you can do](#what-you-can-do)
+- [Errors and Troubleshooting](#errors-and-troubleshooting)
+
+## Screenshot
+
+![screenshot](./docs/screenshot/Screenshot-image-fades.png)
+![screenshot](./docs/screenshot/Screenshot.png)
+![screenshot](./docs/screenshot/Screenshot-drag-image.png)
+![screenshot](./docs/screenshot/Screenshot-one-side-fades.png)
+![screenshot](./docs/screenshot/Screenshot-popup-form.png)
+![screenshot](./docs/screenshot/Screenshot-image-fades-drag.png)
+
 # Features
 
-- Image selected
+- **Image Selection**
 
-  - Select images in diffract sides, left and right
-  - Drag and drop images
-  - Browse local images & select image with url
-    > when selected image with url, first we check if the url point to a valid image link, if it's,
-    > we save the image data with `Blob` and use it, so not needed to fetch the image again to add it to the `dom`
-  - Drag and chose multiply images
-  - you can click on any side, and press Ctl+V, if you was copy a url this will fetch the image also
-  - change selected image
-    > so use able to select image with: Drag & Drop, url, browser local files, Ctl+V
+  - Choose images from various sources: left and right sides.
+  - Easily drag and drop images.
+  - Browse and select images from your local device or via URL.
+    - Automatically verifies the URL to ensure it leads to a valid image link.
+    - Optimizes performance by caching image data with `Blob` when selecting from a URL, eliminating the need for redundant fetch requests.
+  - Select multiple images with ease.
+  - Conveniently paste image URLs by clicking anywhere and pressing Ctl+V.
+  - Swiftly switch between selected images using various methods: Drag & Drop, URL selection, browsing local files, or Ctl+V.
 
-- Image diff component
-  > show tow selected images top of both, and have a nice diff bar moves with cursor move
-- error handling and notifications
-- loading handles
-- popups menu, and tooltip
-- format the file size to a human readily size with B, KB, MB, GB, TB
-- copy images infos text
+- **Image Diff Component**
 
-## what you can do
+  - Display two selected images side by side.
+  - Enhance comparison with a user-friendly diff bar that dynamically adjusts with cursor movement.
 
-you can see [TO-DO file](./TODOS.md)
+- **Error Handling and Notifications**
+
+  - Seamlessly manage errors and provide informative notifications for smooth user experience.
+
+- **Loading Indicators**
+
+  - Keep users informed with loading indicators during data retrieval processes.
+
+- **Pop-up Menu and Tooltips**
+
+  - Intuitively navigate through features with a pop-up menu and tooltips for added convenience.
+
+- **File Size Formatting**
+
+  - Automatically convert file sizes into easily understandable formats (e.g., B, KB, MB, GB, TB) for improved readability.
+
+- **Copy Image Information**
+  - Effortlessly copy image details for further use or sharing.
+
+## What You Can Do
+
+Explore the available functionalities and features in the [TO-DO file](./TODOS.md).
 
 # Errors and Troubleshooting
 
-if got `Network Error` just try again and it's will works fine, this because you browser may not have a rights permissions to get local file
+If you encounter a `Network Error`, simply retry, as this may occur due to browser permissions regarding local file access. Subsequent attempts typically resolve this issue.
