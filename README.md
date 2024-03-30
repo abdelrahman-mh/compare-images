@@ -5,6 +5,7 @@ Images compares app build with React, Typescript, Redux, and more
 # Overview
 
 - [Screenshots](#screenshot)
+- [Try it :fire:](#try-it)
 - [feature](#features)
 - [what you can do](#what-you-can-do)
 - [Errors and Troubleshooting](#errors-and-troubleshooting)
@@ -17,6 +18,30 @@ Images compares app build with React, Typescript, Redux, and more
 ![screenshot](./docs/screenshot/Screenshot-one-side-fades.png)
 ![screenshot](./docs/screenshot/Screenshot-popup-form.png)
 ![screenshot](./docs/screenshot/Screenshot-image-fades-drag.png)
+
+# Try it
+
+- get the app
+
+```shell
+# fist you need to clone it
+git clone https://github.com/abdelrahman-mh/compare-images
+
+# navigate to app
+cd compare-images
+```
+
+- start the app
+
+```shell
+# fist install dependencies
+npm install
+
+# run the dev server
+npm run dev
+```
+
+> this will run the dev server in http://localhost:5173/
 
 # Features
 
